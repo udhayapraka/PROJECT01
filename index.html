@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MoodMate</title>
+  <script src="script.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe0b2, #ffcc80);
+      font-family: 'Segoe UI', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-6 text-gray-800">
+  <div class="max-w-4xl mx-auto bg-white rounded-[30px] shadow-xl p-8">
+    <div class="flex justify-between items-start mb-6">
+      <div>
+        <h1 class="text-lg font-semibold mb-2">MoodMate</h1>
+        <p class="text-sm text-gray-500" id="date">Loading...</p>
+        <p class="text-md mt-2">How are you feeling today?</p>
+        <div id="mood-options" class="flex space-x-3 my-3 text-2xl">
+          <button class="mood-btn hover:scale-110">😊</button>
+          <button class="mood-btn hover:scale-110">😐</button>
+          <button class="mood-btn hover:scale-110">😢</button>
+          <button class="mood-btn hover:scale-110">😠</button>
+          <button class="mood-btn hover:scale-110">😴</button>
+        </div>
+        <textarea id="note" class="w-full border rounded-xl p-3 text-sm mb-4" placeholder="Add a note..."></textarea>
+        <button id="save-entry" class="bg-orange-400 hover:bg-orange-500 text-white px-6 py-2 rounded-lg font-semibold">Save</button>
+      </div>
+      <div class="text-right">
+        <div id="weather" class="text-sm font-medium text-orange-700 flex items-center gap-1 justify-end">
+          <span id="weather-icon"></span>
+          <span id="weather-temp">--</span>
+        </div>
+        <div class="mt-6 text-center">
+          <p class="text-sm font-medium">April</p>
+          <div class="grid grid-cols-7 text-xs text-gray-600 mt-2 gap-1" id="calendar">
+            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+            <div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='1'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='2'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='3'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='4'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='5'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='6'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='7'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='8'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='9'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='10'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='11'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='12'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='13'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='14'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='15'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='16'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='17'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='18'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='19'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='20'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='21'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='22'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='23'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='24'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='25'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='26'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='27'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='28'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='29'></div><div class='h-6 w-6 text-center rounded-full hover:bg-orange-100 cursor-pointer' data-day='30'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto mt-6 bg-white rounded-[30px] shadow-xl p-8">
+    <h2 class="text-lg font-semibold mb-4">All Notes</h2>
+    <div id="entries-list" class="grid md:grid-cols-2 gap-4"></div>
+  </div>
+</body>
+</html>
